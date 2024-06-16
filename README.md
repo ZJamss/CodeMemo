@@ -20,8 +20,6 @@ CodeMemo 支持多种文本类型，包括但不限于 Java、HTML、YAML、XML�
    - 从 [Releases页面](https://github.com/ZJamss/CodeMemo/releases)下载最新的jar包文件。
    - 在 IntelliJ IDEA 中，依次选择 **File -> Settings -> Plugins -> Install Plugin from Disk**，选择下载的jar包并安装。
 
-2. **从插件官网安装**
-   - 在 IntelliJ IDEA 中，依次选择 **File -> Settings -> Plugins -> Marketplace**，搜索 "CodeMemo" 并安装。
 
 ### 快速开始
 
