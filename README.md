@@ -34,6 +34,9 @@ CodeMemo 支持多种文本类型，包括但不限于 Java、HTML、YAML、XML�
    - 点击备忘录名称可以查看和编辑其内容。
    - 使用搜索功能快速定位需要的备忘录。
 
+![image](https://github.com/ZJamss/CodeMemo/assets/76551468/60e06064-4b7f-4bd3-88ef-cca8d4f4ea53)
+
+
 ## 贡献
 
 欢迎开发者参与贡献和改进 CodeMemo 插件！如果您有兴趣参与贡献，请遵循以下步骤：
