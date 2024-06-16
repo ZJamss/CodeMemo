@@ -8,7 +8,7 @@ import java.util.List;
  * @date 2024/6/15
  *
  * <p>
- *     CodeMemoService is a singleton class that provides services for managing code memos.
+ * CodeMemoService is a singleton class that provides services for managing code memos.
  * </p>
  */
 public class CodeMemoService {
@@ -22,7 +22,7 @@ public class CodeMemoService {
     }
 
     public List<CodeMemo> getMemosList() {
-        return globalCodeMemoSaverSettings.getMemo();
+        return globalCodeMemoSaverSettings.getMemos();
     }
 
     public void addMemo(String memoName, String codeType, String codeContent) {

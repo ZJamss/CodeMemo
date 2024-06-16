@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 @Service(Service.Level.APP)
 public final class GlobalCodeMemoSaverSettings
     implements PersistentStateComponent<GlobalCodeMemoSaverSettings> {
-    private List<CodeMemo> notes = new ArrayList<>();
+    private List<CodeMemo> memos = new ArrayList<>();
 
     public GlobalCodeMemoSaverSettings() {
     }
@@ -48,19 +48,19 @@ public final class GlobalCodeMemoSaverSettings
         return ApplicationManager.getApplication().getService(GlobalCodeMemoSaverSettings.class);
     }
 
-    public void setMemos(List<CodeMemo> notes) {
-        this.notes = notes;
+    public void setMemos(List<CodeMemo> memos) {
+        this.memos = memos;
     }
 
-    public List<CodeMemo> getMemo() {
-        return notes;
+    public List<CodeMemo> getMemos() {
+        return memos;
     }
 
     public void addMemo(CodeMemo codeMemo) {
-        notes.add(codeMemo);
+        memos.add(codeMemo);
     }
 
     public void deleteMemoByName(String name) {
-        notes.removeIf(memo -> memo.getName().equals(name));
+        memos.removeIf(memo -> memo.getName().equals(name));
     }
 }

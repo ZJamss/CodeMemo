@@ -38,11 +38,12 @@ CodeMemo is a powerful plugin designed to streamline your development workflow b
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="cn.zjamss.plugin.codeMemo.persistent.GlobalCodeMemoSaverSettings"/>
     </extensions>
+
     <actions>
         <action id="cn.zjamss.plugin.codeMemo.CodeMemoAction" class="cn.zjamss.plugin.codeMemo.CodeMemoAction"
                 text="Code Memo"
                 description="A tool for saving, searching, deleting snippets effortlessly in your IDE.">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
 </idea-plugin>
