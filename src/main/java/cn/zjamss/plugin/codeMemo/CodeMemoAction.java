@@ -1,6 +1,6 @@
 package cn.zjamss.plugin.codeMemo;
 
-import cn.zjamss.plugin.codeMemo.ui.CodeMemoSaverWindow;
+import cn.zjamss.plugin.codeMemo.ui.CodeMemoSaverDialog;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -23,9 +23,9 @@ public class CodeMemoAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
-        CodeMemoSaverWindow codeMemoSaverWindow = new CodeMemoSaverWindow(event.getProject());
+        CodeMemoSaverDialog codeMemoSaverDialog = new CodeMemoSaverDialog(event.getProject());
         DialogBuilder dialogBuilder = new DialogBuilder();
-        dialogBuilder.setCenterPanel(codeMemoSaverWindow.getMainPanel());
+        dialogBuilder.setCenterPanel(codeMemoSaverDialog.getMainPanel());
         dialogBuilder.setTitle(event.getPresentation().getText());
         dialogBuilder.show();
     }

@@ -14,9 +14,19 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    This plugin acts as a versatile memo tool within IntelliJ IDEA, allowing users to save, search, and delete various types of code and text snippets effortlessly.
-    <br>
-    <em>Supports seamless integration with your development workflow.</em>
+   <h2>CodeMemo: A Convenient Memo Tool for IntelliJ IDEA</h2>
+CodeMemo is a powerful plugin designed to streamline your development workflow by providing a centralized repository for storing and managing various types of code and text snippets.
+<br>
+<p>With CodeMemo, you can easily save and organize your code snippets, notes, and development information in a single location, making it easy to access and reuse them whenever needed.</p>
+<p>CodeMemo supports a wide range of file types, including Java, HTML, YAML, XML, JS, CPP and so on, allowing you to store and manage different types of code snippets.</p>
+<p>Key Features:</p>
+<ul>
+    <li><strong>Seamless Integration:</strong> CodeMemo integrates seamlessly with your IntelliJ IDEA workflow, allowing you to access your snippets directly from the IDE.</li>
+    <li><strong>Easy Management:</strong> You can easily add, delete, and manage your snippets using the plugin's intuitive interface.</li>
+    <li><strong>Search Functionality:</strong> CodeMemo includes a search function that allows you to quickly find specific snippets by keyword or content.</li>
+</ul>
+<p>CodeMemo is an essential tool for any developer looking to streamline their workflow and improve their productivity.</p>
+<em>Try CodeMemo today and discover a more efficient way to manage your code snippets!</em>
 ]]></description>
 
     <!-- Product and plugin compatibility requirements.
@@ -32,7 +42,7 @@
         <action id="cn.zjamss.plugin.codeMemo.CodeMemoAction" class="cn.zjamss.plugin.codeMemo.CodeMemoAction"
                 text="Code Memo"
                 description="A tool for saving, searching, deleting snippets effortlessly in your IDE.">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
     </actions>
 </idea-plugin>

@@ -6,6 +6,7 @@ import com.intellij.openapi.editor.EditorSettings;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.ex.EditorEx;
+import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.project.Project;
@@ -16,8 +17,11 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author ZJamss
  * @date 2024/6/13
+ *
  * <p>
- * A class extending from EditorTextField to enable it scrolling
+ *      CustomEditorTextField is a class extending EditorTextField to add scrolling capabilities
+ *      and customize the editor's settings for displaying code snippets.
+ * </p>
  */
 public class CustomEditorTextField extends EditorTextField {
 
@@ -26,6 +30,7 @@ public class CustomEditorTextField extends EditorTextField {
         super(codeDocument, project, plainText, isViewer, OneLienMode);
     }
 
+    // Overridden methods to configure settings
     @Override
     protected @NotNull EditorEx createEditor() {
         EditorEx editor = super.createEditor();
@@ -49,9 +54,9 @@ public class CustomEditorTextField extends EditorTextField {
     }
 
     public void updateHighlighter(String lang, Project project) {
-        LanguageFileType languageFileType = (LanguageFileType) FileTypeManager.getInstance()
+        FileType fileType =  FileTypeManager.getInstance()
             .getFileTypeByExtension(lang);
         ((EditorEx) getEditor()).setHighlighter(
-            HighlighterFactory.createHighlighter(project, languageFileType));
+            HighlighterFactory.createHighlighter(project, fileType));
     }
 }

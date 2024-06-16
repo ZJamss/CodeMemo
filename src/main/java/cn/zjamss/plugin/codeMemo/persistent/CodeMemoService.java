@@ -6,6 +6,10 @@ import java.util.List;
 /**
  * @author ZJamss
  * @date 2024/6/15
+ *
+ * <p>
+ *     CodeMemoService is a singleton class that provides services for managing code memos.
+ * </p>
  */
 public class CodeMemoService {
     private final GlobalCodeMemoSaverSettings globalCodeMemoSaverSettings =

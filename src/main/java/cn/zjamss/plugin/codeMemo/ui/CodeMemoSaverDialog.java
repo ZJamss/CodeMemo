@@ -2,8 +2,8 @@ package cn.zjamss.plugin.codeMemo.ui;
 
 import cn.zjamss.plugin.codeMemo.persistent.CodeMemoService;
 import cn.zjamss.plugin.codeMemo.persistent.entity.CodeMemo;
-import cn.zjamss.plugin.codeMemo.ui.widget.AddMemoPanel;
-import cn.zjamss.plugin.codeMemo.ui.widget.MemoInfoPanel;
+import cn.zjamss.plugin.codeMemo.ui.widget.AddMemoDialog;
+import cn.zjamss.plugin.codeMemo.ui.widget.MemoInfoDialog;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogBuilder;
 import com.intellij.ui.components.JBScrollPane;
@@ -24,20 +24,25 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 /**
- * CodeMemoSaverWindow class
+ * @author ZJamss
+ * @date 2024/6/13
+ *
+ * <p>
+ *     CodeMemoSaverDialog is a UI class for displaying and managing code memos.
+ * </p>
  */
-public class CodeMemoSaverWindow {
+public class CodeMemoSaverDialog {
     private final JPanel mainPanel;
     private final JPanel buttonPanel;
     private final JButton addButton;
     private final JTextField searchField;
     private final Map<String, JButton> mMemoButtons;
     private final Project project;
-    private MemoInfoPanel memoInfoPanel;
+    private MemoInfoDialog memoInfoDialog;
 
 
     // Initialize window
-    public CodeMemoSaverWindow(Project project) {
+    public CodeMemoSaverDialog(Project project) {
         this.project = project;
         mainPanel = new JPanel(new BorderLayout());
         buttonPanel = new JPanel();
@@ -68,7 +73,7 @@ public class CodeMemoSaverWindow {
         loadMemos();
     }
 
-    // register events for elements
+    // Register events for elements
     private void registerEvents() {
         addButton.addActionListener(e -> SwingUtilities.invokeLater(this::showAddMemoDialog));
 
@@ -97,9 +102,9 @@ public class CodeMemoSaverWindow {
             }
         });
 
-        memoInfoPanel.setDeleteMemoListener(codeMemo -> {
+        memoInfoDialog.setDeleteMemoListener(codeMemo -> {
             CodeMemoService.getInstance().deleteMemo(codeMemo.getName());
-            memoInfoPanel.setVoidPanel();
+            memoInfoDialog.setVoidPanel();
             loadMemos();
         });
 
@@ -107,10 +112,10 @@ public class CodeMemoSaverWindow {
     }
 
     public void initializeMemoInfoPanel() {
-        memoInfoPanel = new MemoInfoPanel(project);
-        memoInfoPanel.setPreferredSize(new Dimension(400, 400));
-        memoInfoPanel.setVoidPanel();
-        mainPanel.add(memoInfoPanel, BorderLayout.CENTER);
+        memoInfoDialog = new MemoInfoDialog(project);
+        memoInfoDialog.setPreferredSize(new Dimension(400, 400));
+        memoInfoDialog.setVoidPanel();
+        mainPanel.add(memoInfoDialog, BorderLayout.CENTER);
     }
 
     public void loadMemos() {
@@ -129,7 +134,7 @@ public class CodeMemoSaverWindow {
                 new Dimension(Integer.MAX_VALUE, memoButton.getPreferredSize().height));
             memoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             memoButton.addActionListener(e -> {
-                memoInfoPanel.loadMemoInfo(memoName, codeType, memoContent);
+                memoInfoDialog.loadMemoInfo(memoName, codeType, memoContent);
             });
             buttonPanel.add(memoButton);
             mMemoButtons.put(memoName, memoButton);
@@ -139,7 +144,7 @@ public class CodeMemoSaverWindow {
     }
 
     private void showAddMemoDialog() {
-        AddMemoPanel addCodeMemoDialog = new AddMemoPanel(project);
+        AddMemoDialog addCodeMemoDialog = new AddMemoDialog(project);
 
         DialogBuilder dialogBuilder = new DialogBuilder();
         dialogBuilder.setCenterPanel(addCodeMemoDialog);

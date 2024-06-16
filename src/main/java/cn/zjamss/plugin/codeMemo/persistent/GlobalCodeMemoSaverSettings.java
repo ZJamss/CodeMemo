@@ -15,6 +15,11 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author ZJamss
  * @date 2024/6/13
+ *
+ * <p>
+ * GlobalCodeMemoSaverSettings is a singleton class responsible for persisting code memo data
+ * using IntelliJ IDEA's persistent state component framework.
+ * </p>
  */
 @State(
     name = "GlobalCodeMemoSaverSettings",

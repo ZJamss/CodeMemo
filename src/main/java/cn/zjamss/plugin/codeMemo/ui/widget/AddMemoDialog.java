@@ -18,12 +18,13 @@ import org.slf4j.LoggerFactory;
 /**
  * @author ZJamss
  * @date 2024/6/13
+ *
  * <p>
- * A dialog for adding new memo
+ *      A dialog for adding new memo
+ * </p>
  */
-public class AddMemoPanel extends JPanel {
+public class AddMemoDialog extends JPanel {
 
-    private static final Logger log = LoggerFactory.getLogger(AddMemoPanel.class);
     private final JPanel inputPanel;
     private final JLabel nameLabel;
     private final JLabel typeLabel;
@@ -36,7 +37,7 @@ public class AddMemoPanel extends JPanel {
     private MemoAddListener memoAddListener;
 
     // Initialize panel
-    public AddMemoPanel(Project project) {
+    public AddMemoDialog(Project project) {
         super(new BorderLayout());
         this.project = project;
         setSize(600, 500);

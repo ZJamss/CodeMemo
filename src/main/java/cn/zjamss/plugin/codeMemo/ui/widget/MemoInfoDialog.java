@@ -15,9 +15,13 @@ import org.slf4j.LoggerFactory;
 /**
  * @author ZJamss
  * @date 2024/6/13
+ *
+ * <p>
+ *     MemoInfoDialog is a custom JPanel used to display and manage code memo information.
+ * </p>
  */
-public class MemoInfoPanel extends JPanel {
-    private static final Logger log = LoggerFactory.getLogger(MemoInfoPanel.class);
+public class MemoInfoDialog extends JPanel {
+    private static final Logger log = LoggerFactory.getLogger(MemoInfoDialog.class);
     private final JLabel memoNameLabel;
     private final JButton deleteButton;
     private final CustomEditorTextField codeEditor;
@@ -26,7 +30,8 @@ public class MemoInfoPanel extends JPanel {
     private DeleteMemoListener deleteMemoListener;
     private CodeMemo codeMemo;
 
-    public MemoInfoPanel(Project project) {
+    // Initialize
+    public MemoInfoDialog(Project project) {
         super(new BorderLayout());
         this.project = project;
 
@@ -51,6 +56,7 @@ public class MemoInfoPanel extends JPanel {
         registerEvent();
     }
 
+    // Displaying code memo details
     public void loadMemoInfo(String memoName, String codeType, String codeContent) {
         deleteButton.setEnabled(true);
         codeEditor.setEnabled(true);
