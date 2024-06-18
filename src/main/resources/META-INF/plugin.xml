@@ -40,7 +40,7 @@ CodeMemo is a powerful plugin designed to streamline your development workflow b
     </extensions>
 
     <actions>
-        <action id="cn.zjamss.plugin.codeMemo.CodeMemoAction" class="cn.zjamss.plugin.codeMemo.CodeMemoAction"
+        <action icon="/icons/pluginIcon16x.svg" id="cn.zjamss.plugin.codeMemo.CodeMemoAction" class="cn.zjamss.plugin.codeMemo.CodeMemoAction"
                 text="Code Memo"
                 description="A tool for saving, searching, deleting snippets effortlessly in your IDE.">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
