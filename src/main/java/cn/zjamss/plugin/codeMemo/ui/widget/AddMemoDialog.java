@@ -1,15 +1,22 @@
 package cn.zjamss.plugin.codeMemo.ui.widget;
 
+import static com.intellij.ui.ComponentUtil.getWindow;
+
+import cn.zjamss.plugin.codeMemo.persistent.CodeMemoService;
 import cn.zjamss.plugin.codeMemo.persistent.entity.CodeMemo;
+import cn.zjamss.plugin.codeMemo.ui.CodeMemoSaverDialog;
 import com.intellij.openapi.editor.impl.DocumentImpl;
 import com.intellij.openapi.project.Project;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.Objects;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import org.slf4j.Logger;
@@ -20,7 +27,7 @@ import org.slf4j.LoggerFactory;
  * @date 2024/6/13
  *
  * <p>
- *      A dialog for adding new memo
+ * A dialog for adding new memo
  * </p>
  */
 public class AddMemoDialog extends JPanel {
@@ -33,8 +40,6 @@ public class AddMemoDialog extends JPanel {
     private final Project project;
 
     private final CustomEditorTextField codeEditor;
-
-    private MemoAddListener memoAddListener;
 
     // Initialize panel
     public AddMemoDialog(Project project) {
@@ -65,18 +70,8 @@ public class AddMemoDialog extends JPanel {
         registerEvent();
     }
 
-    public void setMemoAddListener(
-        MemoAddListener memoAddListener) {
-        this.memoAddListener = memoAddListener;
-    }
-
     private void registerEvent() {
-        typeField.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent focusEvent) {
-
-            }
-
+        typeField.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent focusEvent) {
                 updateEditorLanguage();
@@ -92,12 +87,21 @@ public class AddMemoDialog extends JPanel {
         String memoName = nameField.getText();
         String codeType = typeField.getText();
         String codeContent = codeEditor.getText();
+        if (!memoName.isEmpty() && !codeType.isEmpty() &&
+            !codeContent.isEmpty()) {
 
-        memoAddListener.onAddMemo(new CodeMemo(memoName, codeType, codeContent));
-    }
-
-    @FunctionalInterface
-    public interface MemoAddListener {
-        void onAddMemo(CodeMemo codeMemo);
+            if (!CodeMemoService.getInstance().exist(memoName)) {
+                CodeMemoService.getInstance().addMemo(memoName, codeType, codeContent);
+                Objects.requireNonNull(getWindow(this)).dispose();
+                return;
+            }
+            JOptionPane.showMessageDialog(this,
+                "Memo already exist!",
+                "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                "Please enter memo name, code type and code content.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
