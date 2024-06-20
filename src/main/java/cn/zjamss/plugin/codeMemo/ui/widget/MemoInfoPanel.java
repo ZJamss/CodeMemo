@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.security.MessageDigest;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -85,8 +86,10 @@ public class MemoInfoPanel extends JPanel {
         codeEditor.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
-                String newText = codeEditor.getText();
-                codeMemo.setCodeContent(newText);
+                if (codeMemo.getCodeContent().equals(codeEditor.getText())) {
+                    return;
+                }
+                codeMemo.setCodeContent(codeEditor.getText());
                 CodeMemoService.getInstance().updateMemo(codeMemo);
             }
         });
