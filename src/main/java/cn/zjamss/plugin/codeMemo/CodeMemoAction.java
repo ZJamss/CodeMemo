@@ -25,7 +25,7 @@ public class CodeMemoAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent event) {
         CodeMemoSaverDialog codeMemoSaverDialog = new CodeMemoSaverDialog(event.getProject());
         DialogBuilder dialogBuilder = new DialogBuilder();
-        dialogBuilder.setCenterPanel(codeMemoSaverDialog.getMainPanel());
+        dialogBuilder.setCenterPanel(codeMemoSaverDialog);
         dialogBuilder.setTitle(event.getPresentation().getText());
         dialogBuilder.show();
     }

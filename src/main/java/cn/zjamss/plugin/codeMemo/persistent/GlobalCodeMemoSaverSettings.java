@@ -63,4 +63,13 @@ public final class GlobalCodeMemoSaverSettings
     public void deleteMemoByName(String name) {
         memos.removeIf(memo -> memo.getName().equals(name));
     }
+
+    public void updateMemoByName(CodeMemo codeMemo) {
+        for (int i = 0; i < memos.size(); i++) {
+            if (memos.get(i).getName().equals(codeMemo.getName())) {
+                memos.set(i, codeMemo);
+                return;
+            }
+        }
+    }
 }
