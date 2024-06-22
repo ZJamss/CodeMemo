@@ -5,17 +5,9 @@ import cn.zjamss.plugin.codeMemo.ui.widget.MemoButtonListPanel;
 import cn.zjamss.plugin.codeMemo.ui.widget.MemoInfoPanel;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogBuilder;
-import com.intellij.ui.components.JBScrollPane;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 
 /**
  * @author ZJamss
